@@ -20,7 +20,7 @@ Simply right-click in any Finder window or on desktop to access the tools.
 2. Restart Finder (`killall Finder` in Terminal)
 
 ## Requirements
-- macOS 13.5 Catalina or later
+- macOS 13.5 or later
 
 ## Screenshot
 ![FinderTools in action](screenshot.png) <!-- Add your screenshot here -->
