@@ -1,6 +1,15 @@
 # FinderTools
-
 A minimal macOS Finder right-click extension that adds essential tools without any configuration.
+
+⚡ The minimalist macOS Finder extension that requires:
+- No configuration 
+- No permissions
+- No clutter
+
+## Why Choose This?
+- 🎯 **Essentials-only** - Just 3 core features you actually need
+- 🛡️ **Zero-Permission** - Never asks for access to your system
+- 📦 **Single App File** - No background processes or helpers
 
 ## Features
 - 📄 New blank files: `.txt`, `.docx`, `.xlsx`, `.pptx`
@@ -20,7 +29,7 @@ Simply right-click in any Finder window or on desktop to access the tools.
 2. Restart Finder (`killall Finder` in Terminal)
 
 ## Requirements
-- macOS 13.5 or later
+- Supports macOS 13.5+ • 100% Sandboxed
 
 ## Screenshot
 ![FinderTools in action](screenshot.png) <!-- Add your screenshot here -->
