@@ -20,7 +20,7 @@
 2. 重启 Finder（在终端输入 `killall Finder`）
 
 ## 系统要求
-- macOS 10.15 Catalina 或更高版本
+- macOS 13.5 或更高版本
 
 ## 截图
 ![FinderTools 使用演示](screenshot.png) <!-- 请在此处添加你的截图 -->
