@@ -35,3 +35,7 @@ Simply right-click in any Finder window or on desktop to access the tools.
 ![FinderTools 使用演示](./image/screenshot1.png) <!-- 请在此处添加你的截图 -->
 
 ![FinderTools 使用演示](./image/screenshot2.png) <!-- 请在此处添加你的截图 -->
+
+![FinderTools 使用演示](./image/screenshot3.png) <!-- 请在此处添加你的截图 -->
+
+![FinderTools 使用演示](./image/screenshot4.png) <!-- 请在此处添加你的截图 -->
