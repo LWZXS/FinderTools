@@ -32,5 +32,6 @@ Simply right-click in any Finder window or on desktop to access the tools.
 - Supports macOS 13.5+ • 100% Sandboxed
 
 ## Screenshot
-![FinderTools in action](screenshot.png) <!-- Add your screenshot here -->
+![FinderTools 使用演示](./image/screenshot1.png) <!-- 请在此处添加你的截图 -->
 
+![FinderTools 使用演示](./image/screenshot2.png) <!-- 请在此处添加你的截图 -->

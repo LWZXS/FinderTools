@@ -33,5 +33,7 @@
 - 支持 macOS 13.5+ • 完全沙盒化
 
 ## 截图
-![FinderTools 使用演示](screenshot.png) <!-- 请在此处添加你的截图 -->
+![FinderTools 使用演示](./image/screenshot1.png) <!-- 请在此处添加你的截图 -->
+
+![FinderTools 使用演示](./image/screenshot2.png) <!-- 请在此处添加你的截图 -->
 

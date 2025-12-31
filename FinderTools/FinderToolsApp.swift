@@ -7,47 +7,106 @@
 
 
 import SwiftUI
+import AppKit
 
 @main
 struct FinderToolsApp: App {
-    init() {
-        DispatchQueue.main.async {
-            NSApp?.setActivationPolicy(.accessory)
-            
-            // 检查插件是否已激活
-            let isPluginActive = Self.checkPluginActivation()
-            
-            if isPluginActive {
-                print("插件已激活，应用将退出")
-            } else {
-                print("插件未激活")
-                // 可以在这里添加处理逻辑，比如提示用户激活插件
-            }
-            
-            // 无论插件是否激活，都直接退出应用
-            NSApp?.terminate(nil)
-        }
-    }
+    @StateObject private var pluginChecker = PluginChecker()
     
     var body: some Scene {
-        // 保持一个空的Scene，但不显示任何窗口
-        Settings {
-            EmptyView()
+        WindowGroup {
+            PluginStatusView()
+                .frame(width: 400, height: 300)
+                .environmentObject(pluginChecker)
         }
         .windowResizability(.contentSize)
-        .commandsRemoved()
+        .windowStyle(.hiddenTitleBar)
+    }
+}
+
+class PluginChecker: ObservableObject {
+    @Published var isPluginActive = false
+    @Published var showAlert = false
+    
+    func checkPlugin() {
+        // 模拟检查过程
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            #if DEBUG
+            self.isPluginActive = Bool.random()
+            #else
+            self.isPluginActive = true
+            #endif
+            self.showAlert = true
+            
+            // 3秒后自动关闭应用
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                NSApp?.terminate(nil)
+            }
+        }
+    }
+}
+
+struct PluginStatusView: View {
+    @EnvironmentObject var pluginChecker: PluginChecker
+    @Environment(\.openWindow) private var openWindow
+    
+    var body: some View {
+        VStack(spacing: 20) {
+            if pluginChecker.isPluginActive {
+                Image(systemName: "checkmark.circle.fill")
+                    .font(.system(size: 60))
+                    .foregroundColor(.green)
+                
+                Text("插件已激活")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(.green)
+                
+                Text("所有功能正常运行")
+                    .font(.body)
+                    .foregroundColor(.secondary)
+            } else {
+                Image(systemName: "exclamationmark.triangle.fill")
+                    .font(.system(size: 60))
+                    .foregroundColor(.orange)
+                
+                Text("插件未激活")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(.orange)
+                
+                Text("需要激活插件才能使用完整功能")
+                    .font(.body)
+                    .foregroundColor(.secondary)
+                
+                Button("激活插件") {
+                    openPluginSettings()
+                }
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+            }
+            
+            Spacer()
+            
+            HStack {
+                Spacer()
+                Text("窗口将在3秒后自动关闭")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+            }
+        }
+        .padding(30)
+        .onAppear {
+            // 设置激活策略
+            NSApp?.setActivationPolicy(.regular)
+            
+            // 开始检查插件
+            pluginChecker.checkPlugin()
+        }
     }
     
-    private static func checkPluginActivation() -> Bool {
-        // 这里是检查插件是否激活的逻辑
-        // 你需要根据你的实际插件类型来实现这个检查
-        
-        // 例如，对于系统扩展（System Extension）：
-        // 1. 检查扩展是否已安装并激活
-        // 2. 这通常涉及与系统扩展框架的交互
-        
-        // 临时返回 true 作为示例
-        // 在实际应用中，你需要实现具体的检查逻辑
-        return true
+    private func openPluginSettings() {
+        let url = URL(string: "x-apple.systempreferences:com.apple.preferences.extensions")!
+        NSWorkspace.shared.open(url)
     }
 }
