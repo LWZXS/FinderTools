@@ -1,0 +1,7 @@
+# Xcode user-specific files
+*.xcuserstate
+xcuserdata/
+*.xcworkspace/xcuserdata/
+
+# 如果你愿意，可以忽略整个 .xcworkspace（通常也是个人文件）
+# *.xcworkspace/
